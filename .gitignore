@@ -1,0 +1,81 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Build & dist
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# =====================
+# Virtual Environments
+# =====================
+venv/
+env/
+.venv/
+ENV/
+
+# =====================
+# IDE / Editor
+# =====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =====================
+# OS
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# ML Models & Weights
+# =====================
+*.pt
+*.pth
+*.onnx
+*.weights
+yolov8*.pt
+
+# =====================
+# Training Outputs
+# =====================
+runs/
+results/
+logs/
+
+# =====================
+# Datasets
+# =====================
+data/
+datasets/
+
+# (Eğer README tutmak istersen)
+!data/README.md
+!datasets/README.md
+
+# =====================
+# Media Files
+# =====================
+*.mp4
+*.avi
+*.mov
+
+# =====================
+# Environment Variables
+# =====================
+.env
+.env.local
+
+# =====================
+# Temporary Files
+# =====================
+*.tmp
+*.log

@@ -1,0 +1,36 @@
+# Data Configuration
+data:
+  kaggle_dataset: "sovitrath/pothole-detection-yolov4-format"
+  raw_path: "data/raw"
+  processed_path: "data/processed"
+  splits_path: "data/splits"
+  train_ratio: 0.7
+  val_ratio: 0.2
+  test_ratio: 0.1
+
+# Model Configuration
+model:
+  name: "yolov8n"
+  pretrained: true
+  img_size: 640
+  
+# Training Configuration
+training:
+  epochs: 100
+  batch_size: 16
+  learning_rate: 0.001
+  patience: 20
+  device: "cuda"
+  workers: 4
+  
+# Detection Configuration
+detection:
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  max_detections: 100
+  
+# Output Configuration
+output:
+  save_results: true
+  results_path: "results"
+  save_crops: false
