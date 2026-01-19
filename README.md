@@ -93,14 +93,6 @@ python main.py --webcam
 
 **Çıkış**: `Q` tuşuna basın
 
-## 🖼️ Demo Sonuçları
-
-| Tür | Önizleme |
-|----|---------|
-| Fotoğraf | ![](assets/output_test5.jpg) |
-| Video (GIF) | ![](assets/demo.gif) |
-
-
 ### Modeli Eğit
 
 ```bash
