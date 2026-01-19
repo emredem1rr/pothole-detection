@@ -79,15 +79,11 @@ python main.py --setup
 python main.py --detect-image "test/test1.jpeg"
 ```
 
-**Çıktı**: `results/images/output_test1.jpeg`
-
 ### Videoda Tespit
 
 ```bash
 python main.py --detect-video "test/videotest.mp4"
 ```
-
-**Çıktı**: `results/videos/output_videotest.mp4`
 
 ### Webcam ile Canlı Tespit
 
@@ -96,6 +92,14 @@ python main.py --webcam
 ```
 
 **Çıkış**: `Q` tuşuna basın
+
+## 🖼️ Demo Sonuçları
+
+| Tür | Önizleme |
+|----|---------|
+| Fotoğraf | ![](assets/output_test5.jpg) |
+| Video (GIF) | ![](assets/demo.gif) |
+
 
 ### Modeli Eğit
 
