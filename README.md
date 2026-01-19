@@ -1,87 +1,116 @@
 # Pothole Detection Project 🚗
 
-Yol çukurlarını gerçek zamanlı olarak tespit etmek için YOLOv8 tabanlı derin öğrenme projesi.
+Yol çukurlarını gerçek zamanlı olarak tespit etmek için YOLOv8 tabanlı derin öğrenme projesi. Bu proje yol altyapısı inspeksiyonlarını otomatikleştirmek ve kamu güvenliğini artırmak amacıyla geliştirilmiştir.
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-brightgreen)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.8%2B-red)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ## 📋 İçindekiler
 
 - [Özellikler](#özellikler)
+- [Gereksinimler](#gereksinimler)
 - [Kurulum](#kurulum)
 - [Kullanım](#kullanım)
 - [Proje Yapısı](#proje-yapısı)
+- [Teknoloji Stack](#teknoloji-stack)
+- [Model İndirme](#model-indirme)
+- [Sorun Giderme](#sorun-giderme)
+- [Lisans](#lisans)
 
 ## ✨ Özellikler
 
-- ✅ Fotoğraflarda çukur tespiti
-- ✅ Videolarda çukur tespiti
-- ✅ Webcam ile canlı tespit
-- ✅ Model eğitim ve doğrulama
-- ✅ YOLOv8 nano modeli (hızlı ve hafif)
-- ✅ GPU/CPU desteği
+- ✅ **Fotoğrafta Tespit** - Statik görüntülerde çukur tespiti
+- ✅ **Videoda Tespit** - Video dosyalarında gerçek zamanlı tespit
+- ✅ **Webcam Desteği** - Canlı kameradan görüntü işleme
+- ✅ **Model Eğitim** - Kendi veri seti ile model eğitim
+- ✅ **YOLOv8 Nano** - Hızlı ve hafif nesne tespit modeli
+- ✅ **GPU/CPU Uyumlu** - CUDA desteği ile hızlı işleme
+- ✅ **Ayarlanabilir Parametreler** - Confidence ve IoU eşikleri özelleştirilebilir
+
+## 🔧 Gereksinimler
+
+- **Python**: 3.8 veya üzeri
+- **pip**: Python paket yöneticisi
+- **CUDA** (opsiyonel): GPU hızlandırması için
+- **RAM**: Minimum 4GB
+- **Disk**: Model dosyası için ~2GB boş alan
 
 ## 🚀 Kurulum
 
-### Gereksinimler
-- Python 3.8+
-- pip
+### 1. Repository'yi Klonla
 
-### Adımlar
-
-1. **Repository klonla**
 ```bash
-git clone https://github.com/[username]/pothole-detection.git
+git clone https://github.com/emredem1rr/pothole-detection.git
 cd pothole-detection
 ```
 
-2. **Virtual environment oluştur**
+### 2. Virtual Environment Oluştur
+
 ```bash
+# Windows
 python -m venv venv
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate
+
+# Linux/Mac
+python -m venv venv
+source venv/bin/activate
 ```
 
-3. **Bağımlılıkları yükle**
+### 3. Bağımlılıkları Yükle
+
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Modeli indir** (ilk çalıştırmada otomatik indirilir)
+### 4. Model Dosyasını Hazırla
+
 ```bash
+# Otomatik indirme
 python main.py --setup
 ```
-Veya manuel olarak best.pt indir: [Release sayfasından indir](https://github.com/[username]/pothole-detection/releases)
 
 ## 💻 Kullanım
 
 ### Fotoğrafta Tespit
+
 ```bash
 python main.py --detect-image "test/test1.jpeg"
 ```
 
+**Çıktı**: `results/images/output_test1.jpeg`
+
 ### Videoda Tespit
+
 ```bash
 python main.py --detect-video "test/videotest.mp4"
 ```
 
+**Çıktı**: `results/videos/output_videotest.mp4`
+
 ### Webcam ile Canlı Tespit
+
 ```bash
 python main.py --webcam
 ```
 
+**Çıkış**: `Q` tuşuna basın
+
 ### Modeli Eğit
+
 ```bash
 python main.py --train
 ```
 
 ### Modeli Doğrula
+
 ```bash
 python main.py --validate
 ```
 
-### Projeyi Kur
+### Projeyi Başlat (Veri Seti İndir)
+
 ```bash
 python main.py --setup
 ```
@@ -90,54 +119,86 @@ python main.py --setup
 
 ```
 pothole-detection/
-├── main.py                 # Ana giriş noktası
-├── requirements.txt        # Python bağımlılıkları
+├── main.py                           # Ana giriş noktası
+├── requirements.txt                  # Python bağımlılıkları
+├── .gitignore                        # Git ignore kuralları
+├── README.md                         # Proje dokümantasyonu
+│
 ├── configs/
-│   └── config.yaml        # Konfigürasyon dosyası
+│   └── config.yaml                  # Proje konfigürasyonu
+│
 ├── data/
-│   ├── raw/               # Ham veri seti
-│   ├── processed/         # İşlenmiş veriler
-│   └── splits/            # Train/val/test bölümleri
-├── src/
-│   ├── __init__.py
-│   ├── train.py           # Eğitim fonksiyonları
-│   ├── detect.py          # Tespit fonksiyonları
-│   ├── data_loader.py     # Veri yükleme
-│   └── utils.py           # Yardımcı fonksiyonlar
-├── test/                  # Test fotoğraf ve videolar
-│   ├── test1.jpeg
-│   ├── test2.jpeg
-│   ├── videotest.mp4
-│   └── ...
+│   ├── raw/
+│   │   └── dataset/                 # Ham veri seti
+│   ├── processed/                   # İşlenmiş veriler
+│   └── splits/
+│       ├── train/, val/, test/
+│
+├── src/                              # Kaynak kodlar
+│   ├── train.py                     # Eğitim fonksiyonları
+│   ├── detect.py                    # Tespit fonksiyonları
+│   ├── data_loader.py               # Veri yükleme
+│   └── utils.py                     # Yardımcı fonksiyonlar
+│
+├── test/                             # Test dosyaları
+│   ├── test1.jpeg, test2.jpeg       # Test fotoğrafları
+│   └── videotest.mp4                # Test videoları
+│
 ├── models/
-│   └── best.pt            # Eğitilmiş model
-└── results/               # Tespit sonuçları
-    ├── images/            # Tespit edilmiş görüntüler
-    └── videos/            # Tespit edilmiş videolar
+│   └── best.pt                      # Eğitilmiş YOLOv8 modeli
+│
+├── results/
+│   ├── images/                      # Tespit edilmiş görüntüler
+│   └── videos/                      # Tespit edilmiş videolar
+│
+└── runs/                             # Eğitim sonuçları
 ```
 
-## 🔧 Teknolojiler
+## 📊 Dataset
 
-- **Framework**: PyTorch + Ultralytics YOLO
-- **Görüntü İşleme**: OpenCV
-- **Veri İşleme**: Pandas, NumPy
-- **Model**: YOLOv8 Nano
+Bu projede kullanılan veri seti:
+- Açık kaynak yol çukuru (pothole) görüntüleri
+- Manuel etiketleme (YOLO formatında)
 
-## � Model İndirme
+> Dataset telif ve boyut nedeniyle GitHub reposuna eklenmemiştir.
 
-`best.pt` dosyası GitHub'da yer almaz (dosya çok büyük). İlk çalıştırmada otomatik indirilir veya:
+## 🔧 Teknoloji Stack
+
+| Teknoloji | Kullanım |
+|-----------|----------|
+| **Python 3.8+** | Programlama dili |
+| **YOLOv8** | Nesne tespit modeli |
+| **PyTorch** | Deep learning framework |
+| **Ultralytics** | YOLO implementasyonu |
+| **OpenCV** | Görüntü işleme |
+| **NumPy** | Sayısal hesaplamalar |
+
+## 📥 Model İndirme
+
+`best.pt` dosyası GitHub'da yer almaz (dosya boyutu ~2GB). İlk çalıştırmada otomatik indirilir:
 
 ```bash
-# Manuel indirme
+python main.py --setup
+```
+
+Veya manuel indirme:
+
+```bash
 python -c "from ultralytics import YOLO; YOLO('best.pt')"
 ```
 
-Veya [Release](https://github.com/[username]/pothole-detection/releases) sayfasından indir.
+## 🐛 Sorun Giderme
 
-## �📝 Lisans
+| Problem | Çözüm |
+|---------|-------|
+| Model dosyası bulunamadı | `python main.py --setup` çalıştırın |
+| GPU tanınmıyor | CUDA sürümünü kontrol edin |
+| Düşük performans | GPU kullanın veya model boyutunu azaltın |
 
-MIT Lisansı
 
 ## 📧 İletişim
 
-Sorular ve öneriler için iletişime geçebilirsiniz.
+- **GitHub**: [emredem1rr](https://github.com/emredem1rr)
+- **Gmail**: demire773@gmail.com
+
+
